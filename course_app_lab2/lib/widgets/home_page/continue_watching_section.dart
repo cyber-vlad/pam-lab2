@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:course_app_lab2/widgets/home_page/continue_watching_card.dart';
+import 'package:course_app_lab2/bloc/courses_bloc.dart';
+import 'package:course_app_lab2/bloc/courses_state.dart';
 
 class ContinueWatchingSection extends StatelessWidget {
   const ContinueWatchingSection({super.key});
@@ -15,26 +18,31 @@ class ContinueWatchingSection extends StatelessWidget {
             fontSize: 18,
             fontFamily: 'Plus Jakarta Sans',
             fontWeight: FontWeight.w700,
-            letterSpacing: 0.90,
           ),
         ),
-        const Center(
-          child: ContinueWatchingCard(
-            title: 'UI/UX Design Essentials',
-            institute: 'Tech Innovations University',
-            progress: 0.79,
-            rating: '4.9',
-            imageUrl: 'assets/images/ui-ux.png',
-          ),
-        ),
-        const Center(
-          child: ContinueWatchingCard(
-            title: 'Graphic Design Fundamentals',
-            institute: 'Creative Arts Institute',
-            progress: 0.35,
-            rating: '4.7',
-            imageUrl: 'assets/images/graphic-design.jpg',
-          ),
+        const SizedBox(height: 10),
+        BlocBuilder<CoursesBloc, CoursesState>(
+          builder: (context, state) {
+            if (state.status == CoursesStatus.loading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state.status == CoursesStatus.failure) {
+              return Center(child: Text(state.error ?? 'Error'));
+            }
+            return Column(
+              children: state.continueWatching.map((cw) {
+                return Center(
+                  child: ContinueWatchingCard(
+                    title: cw.title,
+                    institute: cw.institute,
+                    progress: cw.progress,
+                    rating: cw.rating,
+                    imageUrl: cw.imageUrl,
+                  ),
+                );
+              }).toList(),
+            );
+          },
         ),
       ],
     );

@@ -1,5 +1,9 @@
-import 'package:course_app_lab2/widgets/home_page/category_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:course_app_lab2/bloc/courses_bloc.dart';
+import 'package:course_app_lab2/bloc/courses_state.dart';
+import 'package:course_app_lab2/bloc/courses_event.dart';
+import 'package:course_app_lab2/widgets/home_page/category_button.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
@@ -19,35 +23,48 @@ class CategoriesSection extends StatelessWidget {
                 fontSize: 18,
                 fontFamily: 'Plus Jakarta Sans',
                 fontWeight: FontWeight.w700,
-                letterSpacing: 0.90,
               ),
             ),
             Text(
-              'See All',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Color(0xFF6C6C6C),
-            fontSize: 10,
-            fontFamily: 'Plus Jakarta Sans',
-            fontWeight: FontWeight.w400,
-            decoration: TextDecoration.underline,
-            letterSpacing: 0.20,
-          ),
+              'See all',
+              style: TextStyle(
+                color: Color(0xFF219EBC),
+                fontSize: 13,
+                fontFamily: 'Plus Jakarta Sans',
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ],
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         SizedBox(
           height: 34,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: const [
-              CategoryButton(label: 'Graphic Design'),
-              SizedBox(width: 8),
-              CategoryButton(label: 'User Interface'),
-              SizedBox(width: 8),
-              CategoryButton(label: 'User Experience'),
-            ],
+          child: BlocBuilder<CoursesBloc, CoursesState>(
+            builder: (context, state) {
+              if (state.status == CoursesStatus.loading) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (state.status == CoursesStatus.failure) {
+                return Center(child: Text(state.error ?? 'Error'));
+              }
+              final cats = state.categories;
+              return ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: cats.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 8),
+                itemBuilder: (context, index) {
+                  final label = cats[index];
+                  return GestureDetector(
+                    onTap: () => context
+                        .read<CoursesBloc>()
+                        .add(CategorySelected(label)),
+                    child: CategoryButton(
+                      label: label,
+                    ),
+                  );
+                },
+              );
+            },
           ),
         ),
       ],

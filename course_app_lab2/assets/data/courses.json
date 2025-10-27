@@ -1,0 +1,130 @@
+{
+  "categories": [
+    "Graphic Design",
+    "User Interface",
+    "User Experience"
+  ],
+  "continueWatching": [
+    {
+      "title": "UI/UX Design Essentials",
+      "institute": "Tech Innovations University",
+      "progress": 0.79,
+      "rating": "4.9",
+      "imageUrl": "assets/images/ui-ux.png"
+    },
+    {
+      "title": "Graphic Design Fundamentals",
+      "institute": "Creative Arts Institute",
+      "progress": 0.35,
+      "rating": "4.7",
+      "imageUrl": "assets/images/graphic-design.jpg"
+    }
+  ],
+  "suggestions": [
+    {
+      "title": "Typography and Layout Design",
+      "institute": "Visual Communication College",
+      "rating": "4.7",
+      "imageUrl": "assets/images/typography.jpg",
+      "price": "35$",
+      "description": "Visual Communication College's Typography and Layout Design course explores the art and science of typography and layout composition. Learn how to effectively use typefaces, hierarchy, alignment, and grid systems to create visually compelling designs. Gain hands-on experience in editorial design, branding, and digital layouts.",
+      "lectures": "50+ Lectures",
+      "learningTime": "4 Weeks",
+      "certification": "Online Certificate",
+      "skills": [
+        "Typography",
+        "Layout composition",
+        "Branding",
+        "Visual communication",
+        "Editorial design"
+      ]
+    },
+    {
+      "title": "Branding and Identity Design",
+      "institute": "Innovation and Design School",
+      "rating": "4.4",
+      "imageUrl": "assets/images/branding.png",
+      "price": "40$",
+      "description": "Innovation and Design School's Branding and Identity course explores the art of creating strong brand identities...",
+      "lectures": "45+ Lectures",
+      "learningTime": "4 Weeks",
+      "certification": "Online Certificate",
+      "skills": [
+        "Branding",
+        "Logo design",
+        "Color theory",
+        "Brand strategy"
+      ]
+    },
+    {
+      "title": "Web Design Fundamentals",
+      "institute": "Web Development L",
+      "rating": "4.9",
+      "imageUrl": "assets/images/web.jpg",
+      "price": "30$",
+      "description": "Web Development L's Web Design Fundamentals course covers the essentials of web design...",
+      "lectures": "55+ Lectures",
+      "learningTime": "5 Weeks",
+      "certification": "Online Certificate",
+      "skills": [
+        "HTML",
+        "CSS",
+        "Responsive design",
+        "Web development"
+      ]
+    }
+  ],
+  "topCourses": [
+    {
+      "title": "Animation and Motion Graphics",
+      "institute": "Institute of Digital Arts",
+      "rating": "4.7",
+      "imageUrl": "assets/images/motion.jpg",
+      "price": "45$",
+      "description": "Institute of Digital Arts' Animation and Motion Graphics course explores the art of creating dynamic visual effects...",
+      "lectures": "40+ Lectures",
+      "learningTime": "5 Weeks",
+      "certification": "Online Certificate",
+      "skills": [
+        "Animation",
+        "Motion graphics",
+        "Digital storytelling",
+        "Visual effects"
+      ]
+    },
+    {
+      "title": "Game Design and Development",
+      "institute": "Development Academy",
+      "rating": "4.4",
+      "imageUrl": "assets/images/game.jpg",
+      "price": "50$",
+      "description": "Development Academy's Game Design and Development course covers the fundamentals of game creation...",
+      "lectures": "60+ Lectures",
+      "learningTime": "6 Weeks",
+      "certification": "Online Certificate",
+      "skills": [
+        "Game design",
+        "Level design",
+        "Game coding",
+        "Development tools"
+      ]
+    },
+    {
+      "title": "Product Design and Innovation",
+      "institute": "Product Design Institute",
+      "rating": "4.9",
+      "imageUrl": "assets/images/product.jpg",
+      "price": "40$",
+      "description": "Product Design Institute's Product Design and Innovation course explores the process of creating innovative products...",
+      "lectures": "45+ Lectures",
+      "learningTime": "4 Weeks",
+      "certification": "Online Certificate",
+      "skills": [
+        "Product design",
+        "Design thinking",
+        "Prototyping",
+        "User-centered design"
+      ]
+    }
+  ]
+}
