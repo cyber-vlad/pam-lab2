@@ -11,8 +11,8 @@ class CoursesRequested extends CoursesEvent {
 }
 
 class CategorySelected extends CoursesEvent {
-  final String category;
-  const CategorySelected(this.category);
+  final String categoryId;
+  const CategorySelected(this.categoryId);
   @override
-  List<Object?> get props => [category];
+  List<Object?> get props => [categoryId];
 }

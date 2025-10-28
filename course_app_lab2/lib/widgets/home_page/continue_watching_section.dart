@@ -36,7 +36,7 @@ class ContinueWatchingSection extends StatelessWidget {
                     title: cw.title,
                     institute: cw.institute,
                     progress: cw.progress,
-                    rating: cw.rating,
+                    rating: cw.rating.toString(),
                     imageUrl: cw.imageUrl,
                   ),
                 );

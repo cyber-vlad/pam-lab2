@@ -61,8 +61,8 @@ class CourseHeader extends StatelessWidget {
                   color: Color(0xFF00707E),
                 ),
                 const SizedBox(width: 3),
-                const Text(
-                  '3.4k students already enrolled',
+                Text(
+                  '${course.enrolledStudents} students already enrolled', 
                   style: TextStyle(
                     color: Color(0xFF00707E),
                     fontSize: 7.64,
@@ -75,7 +75,7 @@ class CourseHeader extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 335,
+            left: 300,
             top: 41,
             child: Text(
               course.price,

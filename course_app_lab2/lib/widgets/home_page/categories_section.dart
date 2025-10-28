@@ -53,13 +53,13 @@ class CategoriesSection extends StatelessWidget {
                 itemCount: cats.length,
                 separatorBuilder: (_, __) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
-                  final label = cats[index];
+                  final c = cats[index];
                   return GestureDetector(
                     onTap: () => context
                         .read<CoursesBloc>()
-                        .add(CategorySelected(label)),
+                        .add(CategorySelected(c.id)),
                     child: CategoryButton(
-                      label: label,
+                      label: c.name,
                     ),
                   );
                 },

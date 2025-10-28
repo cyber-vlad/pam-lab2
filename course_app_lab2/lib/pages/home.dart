@@ -31,25 +31,26 @@ class _HomePageState extends State<HomePage> {
               const CategoriesSection(),
               const SizedBox(height: 24),
               SuggestionsSection(
-                onCardTap: (course) {
+                onCardTap: (lite) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CourseDetailPage(course: course),
+                      builder: (_) => CourseDetailPage(header: lite),
                     ),
                   );
                 },
               ),
               TopCoursesSection(
-                onCardTap: (course) {
+                onCardTap: (lite) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CourseDetailPage(course: course),
+                      builder: (_) => CourseDetailPage(header: lite),
                     ),
                   );
                 },
               ),
+
             ],
           ),
         ),

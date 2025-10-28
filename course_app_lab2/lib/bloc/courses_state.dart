@@ -1,22 +1,23 @@
+import 'package:course_app_lab2/models/category.dart';
 import 'package:equatable/equatable.dart';
-import 'package:course_app_lab2/models/course.dart';
 import 'package:course_app_lab2/data/courses_repository.dart';
+import 'package:course_app_lab2/models/lite_course.dart';
 
 enum CoursesStatus { initial, loading, success, failure }
 
 class CoursesState extends Equatable {
   final CoursesStatus status;
-  final List<String> categories;
-  final String? selectedCategory;
-  final List<Course> suggestions;
-  final List<Course> topCourses;
+  final List<Category> categories;
+  final String? selectedCategoryId;
+  final List<LiteCourse> suggestions;
+  final List<LiteCourse> topCourses;
   final List<ContinueWatchingItem> continueWatching;
   final String? error;
 
   const CoursesState({
     this.status = CoursesStatus.initial,
     this.categories = const [],
-    this.selectedCategory,
+    this.selectedCategoryId,
     this.suggestions = const [],
     this.topCourses = const [],
     this.continueWatching = const [],
@@ -25,17 +26,17 @@ class CoursesState extends Equatable {
 
   CoursesState copyWith({
     CoursesStatus? status,
-    List<String>? categories,
+    List<Category>? categories,
     String? selectedCategory,
-    List<Course>? suggestions,
-    List<Course>? topCourses,
+    List<LiteCourse>? suggestions,
+    List<LiteCourse>? topCourses,
     List<ContinueWatchingItem>? continueWatching,
     String? error,
   }) {
     return CoursesState(
       status: status ?? this.status,
       categories: categories ?? this.categories,
-      selectedCategory: selectedCategory ?? this.selectedCategory,
+      selectedCategoryId: selectedCategory ?? this.selectedCategoryId,
       suggestions: suggestions ?? this.suggestions,
       topCourses: topCourses ?? this.topCourses,
       continueWatching: continueWatching ?? this.continueWatching,
@@ -47,7 +48,7 @@ class CoursesState extends Equatable {
   List<Object?> get props => [
         status,
         categories,
-        selectedCategory,
+        selectedCategoryId,
         suggestions,
         topCourses,
         continueWatching,

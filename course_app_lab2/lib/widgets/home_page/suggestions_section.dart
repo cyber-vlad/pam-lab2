@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:course_app_lab2/widgets/home_page/course_card.dart';
-import 'package:course_app_lab2/models/course.dart';
 import 'package:course_app_lab2/bloc/courses_bloc.dart';
 import 'package:course_app_lab2/bloc/courses_state.dart';
+import 'package:course_app_lab2/models/lite_course.dart';
+import 'package:course_app_lab2/widgets/home_page/course_card.dart';
 
 class SuggestionsSection extends StatelessWidget {
-  final Function(Course) onCardTap;
-  const SuggestionsSection({super.key, required this.onCardTap});
+  final void Function(LiteCourse)? onCardTap;
+  const SuggestionsSection({super.key, this.onCardTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class SuggestionsSection extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF00434C),
             fontSize: 18,
-            fontFamily: 'Plus Jakarta Sans',
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -41,14 +40,12 @@ class SuggestionsSection extends StatelessWidget {
                 separatorBuilder: (_, __) => const SizedBox(width: 12),
                 itemBuilder: (context, index) {
                   final course = list[index];
-                  return GestureDetector(
-                    onTap: () => onCardTap(course),
-                    child: CourseCard(
-                      title: course.title,
-                      institute: course.institute,
-                      rating: course.rating,
-                      imageUrl: course.imageUrl,
-                    ),
+                  return CourseCard(
+                    title: course.title,
+                    institute: course.institute,
+                    rating: course.rating.toStringAsFixed(1),
+                    imageUrl: course.imageUrl,
+                    onTap: onCardTap == null ? null : () => onCardTap!(course),
                   );
                 },
               ),

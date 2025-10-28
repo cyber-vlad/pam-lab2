@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:course_app_lab2/widgets/home_page/course_card.dart';
-import 'package:course_app_lab2/models/course.dart';
 import 'package:course_app_lab2/bloc/courses_bloc.dart';
 import 'package:course_app_lab2/bloc/courses_state.dart';
+import 'package:course_app_lab2/models/lite_course.dart';
+import 'package:course_app_lab2/widgets/home_page/course_card.dart';
 
 class TopCoursesSection extends StatelessWidget {
-  final Function(Course) onCardTap;
-  const TopCoursesSection({super.key, required this.onCardTap});
+  final void Function(LiteCourse)? onCardTap;
+  const TopCoursesSection({super.key, this.onCardTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class TopCoursesSection extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF00434C),
             fontSize: 18,
-            fontFamily: 'Plus Jakarta Sans',
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -34,21 +33,19 @@ class TopCoursesSection extends StatelessWidget {
             }
             final list = state.topCourses;
             return SizedBox(
-              height: 230,
+              height: 160,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: list.length,
                 separatorBuilder: (_, __) => const SizedBox(width: 12),
                 itemBuilder: (context, index) {
                   final course = list[index];
-                  return GestureDetector(
-                    onTap: () => onCardTap(course),
-                    child: CourseCard(
-                      title: course.title,
-                      institute: course.institute,
-                      rating: course.rating,
-                      imageUrl: course.imageUrl,
-                    ),
+                  return CourseCard(
+                    title: course.title,
+                    institute: course.institute,
+                    rating: course.rating.toStringAsFixed(1),
+                    imageUrl: course.imageUrl,
+                    onTap: onCardTap == null ? null : () => onCardTap!(course),
                   );
                 },
               ),

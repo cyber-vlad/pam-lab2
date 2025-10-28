@@ -22,7 +22,7 @@ class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
         status: CoursesStatus.success,
         categories: payload.categories,
         selectedCategory:
-            payload.categories.isNotEmpty ? payload.categories.first : null,
+            payload.categories.isNotEmpty ? payload.categories.first.id : null,
         suggestions: payload.suggestions,
         topCourses: payload.topCourses,
         continueWatching: payload.continueWatching,
@@ -40,6 +40,6 @@ class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
     CategorySelected event,
     Emitter<CoursesState> emit,
   ) {
-    emit(state.copyWith(selectedCategory: event.category));
+    emit(state.copyWith(selectedCategory: event.categoryId));
   }
 }
