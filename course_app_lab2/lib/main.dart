@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:course_app_lab2/pages/home.dart';
-import 'package:course_app_lab2/bloc/courses_bloc.dart';
-import 'package:course_app_lab2/bloc/courses_event.dart';
-import 'package:course_app_lab2/data/courses_repository.dart';
+import 'injection.dart';
+import 'features/courses/presentation/bloc/courses_bloc.dart';
+import 'features/courses/presentation/bloc/courses_event.dart';
+import 'features/courses/domain/use_cases/get_feed.dart';
+import 'package:course_app_lab2/features/courses/presentation/pages/home.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDependencies();
   runApp(const MyApp());
 }
 
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => CoursesBloc(repository: CoursesRepository())
+          create: (_) => CoursesBloc(getFeed: sl<GetFeed>())
             ..add(const CoursesRequested()),
         ),
       ],
